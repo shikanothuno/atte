@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('break_times', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("user_id")->constrained();
+            $table->date("date");
+            $table->time("start_time")->nullable();
+            $table->time("end_time")->nullable();
             $table->timestamps();
         });
     }
