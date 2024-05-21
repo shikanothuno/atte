@@ -10,7 +10,11 @@
 @section('content')
     <body id="body">
         <main id="main">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
             <div class="parent">
+
                 <form action="{{ route("register") }}" method="POST">
                     @csrf
                     <h2>会員登録</h2>
