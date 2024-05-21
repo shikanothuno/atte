@@ -15,7 +15,7 @@
                     @csrf
                     <h2>ログイン</h2>
                     <input class="child__input" type="text" name="email" placeholder="メールアドレス">
-                    <input class="child__input" type="text" name="password" placeholder="パスワード">
+                    <input class="child__input" type="password" name="password" placeholder="パスワード">
                     <button class="child__button">会員登録</button>
                     <p class="child__p">アカウントをお持ちでない方はこちらから</p>
                     <a class="child__a" href="{{ route("register") }}">会員登録</a>
