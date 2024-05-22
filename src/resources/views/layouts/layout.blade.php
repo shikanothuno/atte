@@ -14,19 +14,18 @@
             <div class="header">
                 <div class="logo">Atte</div>
                 @if (Request::routeIs("attendance")||Request::routeIs("showList"))
-                <nav>
-                    <ul>
-                        <li><a href="/home">ホーム</a></li>
-                        <li><a href="/date">日付一覧</a></li>
-                        <li>
+                <table>
+                    <tr>
+                        <td><a class="nav__a" href="/home">ホーム</a></td>
+                        <td><a class="nav__a" href="/date">日付一覧</a></td>
+                        <td>
                             <form method="POST" action="{{ route("logout") }}">
                                 @csrf
                                 <button class="logout-button">ログアウト</button>
                             </form>
-
-                        </li>
-                    </ul>
-                </nav>
+                        </td>
+                    </tr>
+                </table>
                 @endif
             </div>
         </header>
