@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WorkingTimeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -18,3 +20,13 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::controller(AttendanceController::class)->middleware("auth")->group(function(){
+    Route::get("/","attendance")->name("attendance");
+    Route::get("/start-attendance","startAttendance")->name("startAttendance");
+    Route::get("/end-attendance","endAttendance")->name("endAttendance");
+    Route::get("/start-break-time","startBreakTime")->name("startBreakTime");
+    Route::get("/end-break-time","endBreakTime")->name("endBreakTime");
+});
+
+Route::get("/{date}/show-list",[WorkingTimeController::class,"showList"])->middleware("auth")->name("showList");
