@@ -30,13 +30,13 @@
 #table {
     align-items: center;
     border-collapse: collapse;
-    width: 300px;
 }
 
 #table td,th {
     border-color: #909090;
     border-style: solid;
     border-width: 1px 0px;
+    margin : 0px;
     padding: 20px;
     text-align: center;
 }

@@ -14,7 +14,7 @@
             <div class="header">
                 <div class="logo">Atte</div>
                 @if (Request::routeIs("attendance")||Request::routeIs("showList"))
-                <table>
+                <table class="header__table">
                     <tr>
                         <td><a class="nav__a" href="/home">ホーム</a></td>
                         <td><a class="nav__a" href="/date">日付一覧</a></td>
