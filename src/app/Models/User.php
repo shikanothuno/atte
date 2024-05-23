@@ -114,4 +114,6 @@ class User extends Authenticatable
         $user->breaking = false;
         $user->save();
     }
+
+
 }
