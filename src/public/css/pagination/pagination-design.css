@@ -2,6 +2,11 @@ nav {
     display: flex;
 }
 
+td, th {
+    margin: 0;
+    padding: 0;
+}
+
 a {
     background-color: white;
     color: blue;
