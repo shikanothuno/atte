@@ -14,8 +14,11 @@ class CalendarController extends Controller
         $month = Carbon::parse($target_month)->format("m");
         $calendar_ym = Carbon::create($year,$month,1,0,0,0);
 
-        $startDay = $calendar_ym->copy()->subMonth()->endOfMonth()->previous(Carbon::SUNDAY);
-        $endDay = $calendar_ym->copy()->addMonth()->firstOfMonth()->next(Carbon::SATURDAY);
+        $startOfMonth = $calendar_ym->copy()->startOfMonth();
+        $endOfMonth = $calendar_ym->copy()->endOfMonth();
+
+        $startDay = $startOfMonth->copy()->startOfWeek(Carbon::SUNDAY);
+        $endDay = $endOfMonth->copy()->endOfWeek(Carbon::SATURDAY);
 
         $days = [];
         $currentDay = $startDay->copy();

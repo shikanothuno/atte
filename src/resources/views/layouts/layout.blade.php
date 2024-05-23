@@ -13,7 +13,7 @@
         <header>
             <div class="header">
                 <div class="logo">Atte</div>
-                @if (Request::routeIs("attendance")||Request::routeIs("showList"))
+                @if (Request::routeIs("attendance")||Request::routeIs("showList")||Request::routeIs("calendar.show"))
                 <table class="header__table">
                     <tr>
                         <td><a class="nav__a" href="/home">ホーム</a></td>
