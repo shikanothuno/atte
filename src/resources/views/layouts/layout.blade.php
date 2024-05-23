@@ -17,7 +17,7 @@
                 <table class="header__table">
                     <tr>
                         <td><a class="nav__a" href="/home">ホーム</a></td>
-                        <td><a class="nav__a" href="/date">日付一覧</a></td>
+                        <td><a class="nav__a" href="{{ route("calendar.show",date("Y-m")) }}">日付一覧</a></td>
                         <td>
                             <form method="POST" action="{{ route("logout") }}">
                                 @csrf
