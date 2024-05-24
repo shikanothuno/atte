@@ -37,7 +37,9 @@ class Attendance extends Model
     {
         $attendance_start = $this->getAttendanceStart($user_id,$date);
         $attendance_end = $this->getAttendanceEnd($user_id,$date);
-
+        if(empty($attendance_start)||empty($attendance_end)){
+            return "00:00:00";
+        }
         $total_attendance = strtotime($attendance_end[0]->end_time) - strtotime($attendance_start[0]->start_time);
 
         $break_time = new BreakTime();

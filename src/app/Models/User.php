@@ -115,5 +115,53 @@ class User extends Authenticatable
         $user->save();
     }
 
+    public function getUserStartTime($user_id,$target_month)
+    {
+        $number_of_days_in_a_month = date("t",strtotime($target_month));
+        $attendance = new Attendance();
+        $result = [];
+        for($i=0;$i<$number_of_days_in_a_month;$i++){
+            $result[$i] = $attendance->getAttendanceStart($user_id,$target_month . "-" . str_pad($i+1,2,0,STR_PAD_LEFT));
+        }
+
+        return $result;
+    }
+
+    public function getUserEndTime($user_id,$target_month)
+    {
+        $number_of_days_in_a_month = date("t",strtotime($target_month));
+        $attendance = new Attendance();
+        $result = [];
+        for($i=0;$i<$number_of_days_in_a_month;$i++){
+            $result[$i] = $attendance->getAttendanceEnd($user_id,$target_month . "-" . str_pad($i+1,2,0,STR_PAD_LEFT));
+        }
+
+        return $result;
+    }
+
+    public function getUserWorkingTime($user_id,$target_month)
+    {
+        $number_of_days_in_a_month = date("t",strtotime($target_month));
+        $attendance = new Attendance();
+        $result = [];
+        for($i=0;$i<$number_of_days_in_a_month;$i++){
+            $result[$i] = $attendance->calcWorkingTime($user_id,$target_month . "-" . str_pad($i+1,2,0,STR_PAD_LEFT));
+        }
+
+        return $result;
+    }
+
+    public function getUserTotalBreakTime($user_id,$target_month)
+    {
+        $number_of_days_in_a_month = date("t",strtotime($target_month));
+        $attendance = new Attendance();
+        $result = [];
+        for($i=0;$i<$number_of_days_in_a_month;$i++){
+            $result[$i] = $attendance->getTotalBreakTime($user_id,$target_month . "-" . str_pad($i+1,2,0,STR_PAD_LEFT));
+        }
+
+        return $result;
+    }
+
 
 }

@@ -33,6 +33,6 @@ Route::controller(AttendanceController::class)->middleware("auth")->group(functi
 
 Route::get("/{date}/show-list",[WorkingTimeController::class,"showList"])->middleware("auth")->name("showList");
 
-Route::get("/home",[HomeController::class,"home"])->middleware("auth")->name("home");
+Route::get("/{month}/home",[HomeController::class,"home"])->middleware("auth")->name("home");
 
 Route::get('/{month}/calendar', [CalendarController::class, 'show'])->middleware("auth")->name('calendar.show');
