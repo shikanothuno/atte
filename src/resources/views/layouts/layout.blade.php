@@ -24,6 +24,9 @@
                                 <button class="logout-button">ログアウト</button>
                             </form>
                         </td>
+                        @if (Request::routeIs("home"))
+                            <td><a class="nav__a" href="{{ route("attendance") }}">打刻ページ</a></td>
+                        @endif
                     </tr>
                 </table>
                 @endif
