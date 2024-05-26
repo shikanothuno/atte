@@ -15,6 +15,7 @@ services:
         build: ./docker/php
         volumes:
             - ./src:/var/www/
+        entrypoint: ["/bin/sh", "-c", "php artisan schedule:work"]
 
     mysql:
         image: mysql:8.0.26
