@@ -15,7 +15,6 @@ services:
         build: ./docker/php
         volumes:
             - ./src:/var/www/
-        entrypoint: ["/bin/sh", "-c", "php artisan schedule:work"]
 
     mysql:
         image: mysql:8.0.26
@@ -41,3 +40,8 @@ services:
             - mysql
         ports:
             - 8080:80
+    mailhog:
+        image: mailhog/mailhog
+        ports:
+            - 8025:8025
+            - 1025:1025
