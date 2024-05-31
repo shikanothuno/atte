@@ -42,8 +42,8 @@ class BreakTime extends Model
         $totalBreakTime = 0;
 
         foreach(array_map(null,$end_break_times,$start_break_times) as [$end,$start]){
-            if(!($end->end_time == null)){
-                $totalBreakTime += (strtotime($end->end_time) - strtotime($start->start_time));
+            if($end->end_time != null){
+                $totalBreakTime += (strtotime(date("H:i:s",strtotime($end->end_time))) - strtotime(date("H:i:s",strtotime($start->start_time))));
             }
         }
 
