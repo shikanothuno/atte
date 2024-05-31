@@ -26,8 +26,8 @@
                 @foreach ($attendances as $attendance)
                     <tr>
                         <td>{{ date("d",strtotime($attendance->date)) }}日</td>
-                        <td>{{ $attendance->start_time }}</td>
-                        <td>{{ $attendance->end_time }}</td>
+                        <td>{{ date("H:i:s",strtotime($attendance->start_time)) }}</td>
+                        <td>{{ date("H:i:s",strtotime($attendance->end_time)) }}</td>
                         <td>{{ $attendance->calcWorkingTime($user->id,$attendance->date) }}</td>
                         <td>{{ $attendance->getTotalBreakTime($user->id,$attendance->date) }}</td>
                     </tr>
