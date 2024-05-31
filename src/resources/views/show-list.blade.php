@@ -37,12 +37,12 @@
 
 
                         </td>
-                        <td>{{ $attendance->calcWorkingTime($attendance->user->id,$attendance->date) }}</td>
+                        <td>{{ $attendance->getTotalBreakTime($attendance->user->id,$attendance->date) }}</td>
                         <td>
                             @if ($attendance->end_time == null)
                                 **:**:**
                             @else
-                                {{ $attendance->getTotalBreakTime($attendance->user->id,$attendance->date) }}
+                                {{ $attendance->calcWorkingTime($attendance->user->id,$attendance->date) }}
                             @endif
                         </td>
                     </tr>
