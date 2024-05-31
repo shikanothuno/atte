@@ -25,11 +25,11 @@
                 </tr>
                 @foreach ($attendances as $attendance)
                     <tr>
-                        <td>{{ $loop->iteration }}日</td>
+                        <td>{{ date("d",strtotime($attendance->date)) }}日</td>
                         <td>{{ $attendance->start_time }}</td>
                         <td>{{ $attendance->end_time }}</td>
-                        <td>{{ $attendance->calcWorkingTime($user->id,date("Y-m-d",strtotime($target_month . "-01" . " +" . strval($loop->index) . "day"))) }}</td>
-                        <td>{{ $attendance->getTotalBreakTime($user->id,date("Y-m-d",strtotime($target_month . "-01" . " +" . strval($loop->index) . "day"))) }}</td>
+                        <td>{{ $attendance->calcWorkingTime($user->id,$attendance->date) }}</td>
+                        <td>{{ $attendance->getTotalBreakTime($user->id,$attendance->date) }}</td>
                     </tr>
                 @endforeach
 
