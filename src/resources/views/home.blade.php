@@ -21,16 +21,28 @@
                     <th>日付</th>
                     <th>勤務開始</th>
                     <th>勤務終了</th>
-                    <th>勤務時間</th>
                     <th>休憩時間</th>
+                    <th>勤務時間</th>
                 </tr>
                 @foreach ($attendances as $attendance)
                     <tr>
                         <td>{{ date("d",strtotime($attendance->date)) }}日</td>
                         <td>{{ date("H:i:s",strtotime($attendance->start_time)) }}</td>
-                        <td>{{ date("H:i:s",strtotime($attendance->end_time)) }}</td>
-                        <td>{{ $attendance->calcWorkingTime($user->id,$attendance->date) }}</td>
+                        <td>
+                            @if ($attendance->end_time == null)
+                                **:**:**
+                            @else
+                            {{ date("H:i:s",strtotime($attendance->end_time)) }}
+                            @endif
+                        </td>
                         <td>{{ $attendance->getTotalBreakTime($user->id,$attendance->date) }}</td>
+                        <td>
+                            @if ($attendance->end_time == null)
+                                **:**:**
+                            @else
+                            {{ $attendance->calcWorkingTime($user->id,$attendance->date) }}
+                            @endif
+                        </td>
                     </tr>
                 @endforeach
 

@@ -28,13 +28,21 @@
                     <tr>
                         <td>{{ $attendance->user->name }}</td>
                         <td>{{ date("H:i:s",strtotime($attendance->start_time)) }}</td>
-                        <td>{{ date("H:i:s",strtotime($attendance->end_time)) }}</td>
-                        <td>{{ $attendance->calcWorkingTime($attendance->user->id,$date) }}</td>
                         <td>
                             @if ($attendance->end_time == null)
                                 **:**:**
                             @else
-                                {{ $attendance->getTotalBreakTime($attendance->user->id,$date) }}
+                                {{ date("H:i:s",strtotime($attendance->end_time)) }}
+                            @endif
+
+
+                        </td>
+                        <td>{{ $attendance->calcWorkingTime($attendance->user->id,$attendance->date) }}</td>
+                        <td>
+                            @if ($attendance->end_time == null)
+                                **:**:**
+                            @else
+                                {{ $attendance->getTotalBreakTime($attendance->user->id,$attendance->date) }}
                             @endif
                         </td>
                     </tr>
