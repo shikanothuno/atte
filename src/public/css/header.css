@@ -12,6 +12,11 @@
 
 }
 
+.logo a {
+    text-decoration: inherit;
+    color: inherit;
+}
+
 .header {
     display: flex;
     justify-content: space-between;

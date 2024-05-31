@@ -12,7 +12,7 @@
     <body id="body">
         <header>
             <div class="header">
-                <div class="logo">Atte</div>
+                <div class="logo"><a href="{{ route("attendance") }}">Atte</a></div>
                 @if (Request::routeIs("attendance")||Request::routeIs("showList")||Request::routeIs("calendar.show")||Request::routeIs("home"))
                 <table class="header__table">
                     <tr>
