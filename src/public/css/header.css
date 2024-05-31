@@ -15,6 +15,7 @@
 .logo a {
     text-decoration: inherit;
     color: inherit;
+    white-space: nowrap;
 }
 
 .header {
