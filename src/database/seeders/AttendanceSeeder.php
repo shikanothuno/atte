@@ -17,9 +17,9 @@ class AttendanceSeeder extends Seeder
             for($j=0;$j<10;$j++){
                 Attendance::create([
                     "user_id" => $i,
-                    "date" => date("Y-m-d",strtotime("2024-5-1 +" . strval($j) . "day")),
-                    "start_time" => date("H:i:s",strtotime("08:30:00")),
-                    "end_time"=> date("H:i:s",strtotime("17:30")),
+                    "date" => date("Y-m-d 00:00:00",strtotime("2024-5-1 +" . strval($j) . "day")),
+                    "start_time" => date("Y-m-d H:i:s",strtotime("2024-5-1 +" . strval($j) . "day" . "08:30:00")),
+                    "end_time"=> date("Y-m-d H:i:s",strtotime("2024-5-1 +" . strval($j) . "day" . "17:30:00")),
                 ]);
             }
         }

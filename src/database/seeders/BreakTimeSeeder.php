@@ -17,16 +17,16 @@ class BreakTimeSeeder extends Seeder
             for($j=0;$j<10;$j++){
                 BreakTime::create([
                     "user_id" => $i,
-                    "date" => date("Y-m-d",strtotime("2024-5-1 +" . strval($j) . "day")),
-                    "start_time" => date("H:i:s",strtotime("12:00:00")),
-                    "end_time"=> date("H:i:s",strtotime("13:00:00")),
+                    "date" => date("Y-m-d :00:00:00",strtotime("2024-5-1 +" . strval($j) . "day")),
+                    "start_time" => date("Y-m-d H:i:s",strtotime("2024-5-1 +" . strval($j) . "day" . "12:00:00")),
+                    "end_time"=> date("Y-m-d H:i:s",strtotime("2024-5-1 +" . strval($j) . "day" . "13:00:00")),
                 ]);
 
                 BreakTime::create([
                     "user_id" => $i,
                     "date" => date("Y-m-d",strtotime("2024-5-1 +" . strval($j) . "day")),
-                    "start_time" => date("H:i:s",strtotime("15:00:00")),
-                    "end_time"=> date("H:i:s",strtotime("15:10:00")),
+                    "start_time" => date("Y-m-d H:i:s",strtotime("2024-5-1 +" . strval($j) . "day" . "15:00:00")),
+                    "end_time"=> date("Y-m-d H:i:s",strtotime("2024-5-1 +" . strval($j) . "day" . "15:10:00")),
                 ]);
             }
         }
