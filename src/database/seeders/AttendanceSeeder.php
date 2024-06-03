@@ -14,7 +14,7 @@ class AttendanceSeeder extends Seeder
     public function run(): void
     {
         for($i=1;$i<=100;$i++){
-            for($j=0;$j<100;$j++){
+            for($j=0;$j<30;$j++){
                 Attendance::create([
                     "user_id" => $i,
                     "date" => date("Y-m-d 00:00:00",strtotime("2024-5-1 +" . strval($j) . "day")),
