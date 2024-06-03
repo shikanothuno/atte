@@ -26,6 +26,7 @@
                         </td>
                         @if (Request::routeIs("home"))
                             <td><a class="nav__a" href="{{ route("attendance") }}">打刻ページ</a></td>
+                            <td><a class="nav__a" href="{{ route("userList") }}">ユーザーリスト</a></td>
                         @endif
                     </tr>
                 </table>

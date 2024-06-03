@@ -29,4 +29,5 @@
 .user-name {
     text-decoration: none;
     color: black;
+    background-color: inherit;
 }
