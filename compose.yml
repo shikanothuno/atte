@@ -15,8 +15,6 @@ services:
         build: ./docker/php
         volumes:
             - ./src:/var/www/
-        command: bash -c "cron && php artisan schedule:run >> /dev/null 2>&1 && php artisan serve --host=0.0.0.0 --port=8000"
-        tty: true
 
     mysql:
         image: mysql:8.0.26
