@@ -18,8 +18,8 @@ Schedule::call(function(){
 
 Schedule::call(function(){
     $users = User::all();
-    $yesterday = date("Y-m-d",strtotime(date("Y-m-d") . " -1 day"));
-    $today = date("Y-m-d");
+    $yesterday = date("Y-m-d H:i:s",strtotime(date("Y-m-d") . " -1 day" . "00:00:00"));
+    $today = date("Y-m-d",strtotime(date("Y-m-d" . "00:00:00")));
     foreach($users as $user){
         if($user->breaking){
             $break_time_collection_yesterday = BreakTime::where("user_id","=",$user->id)->where("date","=",$yesterday)->get();
