@@ -13,6 +13,10 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote')->hourly();
 
 Schedule::call(function(){
+    Log::debug(date("Y-m-d H:i:s"));
+});
+
+Schedule::call(function(){
     $users = User::all();
     $yesterday = date("Y-m-d",strtotime(date("Y-m-d") . " -1 day"));
     $today = date("Y-m-d");
