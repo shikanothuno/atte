@@ -3,7 +3,6 @@
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserListController;
 use App\Http\Controllers\WorkingTimeController;
 use Illuminate\Support\Facades\Route;
