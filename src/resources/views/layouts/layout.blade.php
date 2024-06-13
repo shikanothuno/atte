@@ -13,24 +13,27 @@
         <header>
             <div class="header">
                 <div class="logo"><a href="{{ route("attendance") }}">Atte</a></div>
-                @if (Request::routeIs("attendance")||Request::routeIs("showList")||Request::routeIs("calendar.show")||Request::routeIs("home"))
-                <table class="header__table">
-                    <tr>
+                @if (Request::routeIs("attendance")||
+                Request::routeIs("showList")||
+                Request::routeIs("calendar.show")||
+                Request::routeIs("home"))
+                <nav class="header__nav">
+                    <ul>
                         @if (Request::routeIs("home"))
-                            <td><a class="nav__a" href="{{ route("attendance") }}">打刻ページ</a></td>
-                            <td><a class="nav__a" href="{{ route("userList") }}">ユーザーリスト</a></td>
+                            <li><a class="nav__a" href="{{ route("attendance") }}">打刻ページ</a></li>
+                            <li><a class="nav__a" href="{{ route("userList") }}">ユーザーリスト</a></li>
                         @endif
 
-                        <td><a class="nav__a" href="{{ route("home",date("Y-m")) }}">ホーム</a></td>
-                        <td><a class="nav__a" href="{{ route("calendar.show",date("Y-m")) }}">日付一覧</a></td>
-                        <td>
+                        <li><a class="nav__a" href="{{ route("home",date("Y-m")) }}">ホーム</a></li>
+                        <li><a class="nav__a" href="{{ route("calendar.show",date("Y-m")) }}">日付一覧</a></li>
+                        <li>
                             <form method="POST" action="{{ route("logout") }}">
                                 @csrf
                                 <button class="logout-button">ログアウト</button>
                             </form>
-                        </td>
-                    </tr>
-                </table>
+                        </li>
+                    </ul>
+                </nav>
                 @endif
             </div>
         </header>
