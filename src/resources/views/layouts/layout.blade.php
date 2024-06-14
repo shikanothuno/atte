@@ -16,10 +16,14 @@
                 @if (Request::routeIs("attendance")||
                 Request::routeIs("showList")||
                 Request::routeIs("calendar.show")||
-                Request::routeIs("home"))
+                Request::routeIs("home")||
+                Request::routeIs("userList")||
+                Request::routeIs("userDetail"))
                 <nav class="header__nav">
                     <ul>
-                        @if (Request::routeIs("home"))
+                        @if (Request::routeIs("home")||
+                        Request::routeIs("userList")||
+                        Request::routeIs("userDetail"))
                             <li><a class="nav__a" href="{{ route("attendance") }}">打刻ページ</a></li>
                             <li><a class="nav__a" href="{{ route("userList") }}">ユーザーリスト</a></li>
                         @endif
