@@ -47,8 +47,7 @@ class Attendance extends Model
 
         $totalWorkingTime = $total_attendance - $total_break_time;
 
-        date_default_timezone_set("UTC");
-        return date("H:i:s",$totalWorkingTime);
+        return gmdate("H:i:s",$totalWorkingTime);
     }
 
     public function getTotalBreakTime($user_id,$date)
@@ -56,7 +55,6 @@ class Attendance extends Model
         $break_time = new BreakTime();
         $total_break_time = $break_time->calcBreakTime($user_id,$date);
 
-        date_default_timezone_set("UTC");
-        return date("H:i:s",$total_break_time);
+        return gmdate("H:i:s",$total_break_time);
     }
 }

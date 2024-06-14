@@ -58,7 +58,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function startAttendance($user_id)
     {
-        date_default_timezone_set("Asia/Tokyo");
         $attendance = new Attendance();
         $attendance->user_id = $user_id;
         $attendance->date = date("Y-m-d 00:00:00");
@@ -72,7 +71,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function endAttendance($user_id)
     {
-        date_default_timezone_set("Asia/Tokyo");
         $attendance_collection = Attendance::where("user_id","=",$user_id)->where("date","<=",date("Y-m-d H:i:s"))->where("date",">=",date("Y-m-d"))->get();
 
         $attendance = Attendance::find($attendance_collection[0]->id);
@@ -86,7 +84,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function startBreakTime($user_id)
     {
-        date_default_timezone_set("Asia/Tokyo");
         $break_time = new BreakTime();
         $break_time->user_id = $user_id;
         $break_time->date = date("Y-m-d 00:00:00");
@@ -100,7 +97,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function endBreakTime($user_id)
     {
-        date_default_timezone_set("Asia/Tokyo");
         $break_times_collections = BreakTime::where("user_id","=",$user_id)->where("date","<=",date("Y-m-d H:i:s"))->where("date",">=",date("Y-m-d"))->get();
 
         foreach($break_times_collections as $break_times_collection){
