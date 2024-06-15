@@ -49,4 +49,4 @@ Schedule::call(function(){
 
         }
     }
-})->everyMinute();
+})->daily();
