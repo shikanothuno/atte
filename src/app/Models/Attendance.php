@@ -21,22 +21,26 @@ class Attendance extends Model
         return $this->belongsTo(User::class);
     }
 
+    // 指定したユーザーの指定した日にちの勤務開始時間を取得
     public function getAttendanceStart($user_id,$date)
     {
         return $attendance_start = Attendance::select("start_time")->where("user_id","=",$user_id)
         ->where("date","=",$date)->get()->all();
     }
 
+    // 指定したユーザーの指定した日にちの勤務開始時間を取得
     public function getAttendanceEnd($user_id,$date)
     {
         return $attendance_end = Attendance::select("end_time")->where("user_id","=",$user_id)
         ->where("date","=",$date)->get()->all();
     }
 
+    // 指定したユーザーの指定した日にちの勤務時間を計算
     public function calcWorkingTime($user_id,$date)
     {
         $attendance_start = $this->getAttendanceStart($user_id,$date);
         $attendance_end = $this->getAttendanceEnd($user_id,$date);
+        // 勤務開始、勤務終了がそろってない場合は00：00：00を返す
         if(empty($attendance_start)||empty($attendance_end)){
             return "00:00:00";
         }
@@ -50,6 +54,7 @@ class Attendance extends Model
         return gmdate("H:i:s",$totalWorkingTime);
     }
 
+    // 指定したユーザーの指定した日にちの休憩時間を取得
     public function getTotalBreakTime($user_id,$date)
     {
         $break_time = new BreakTime();

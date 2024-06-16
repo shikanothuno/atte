@@ -55,7 +55,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(BreakTime::class);
     }
-
+    // 勤務開始を記録
     public function startAttendance($user_id)
     {
         $attendance = new Attendance();
@@ -69,6 +69,7 @@ class User extends Authenticatable implements MustVerifyEmail
         $user->save();
     }
 
+    // 勤務終了を記録
     public function endAttendance($user_id)
     {
         $attendance_collection = Attendance::where("user_id","=",$user_id)->where("date","<=",date("Y-m-d H:i:s"))->where("date",">=",date("Y-m-d"))->get();
@@ -82,6 +83,7 @@ class User extends Authenticatable implements MustVerifyEmail
         $user->save();
     }
 
+    // 休憩開始を記録
     public function startBreakTime($user_id)
     {
         $break_time = new BreakTime();
@@ -95,6 +97,7 @@ class User extends Authenticatable implements MustVerifyEmail
         $user->save();
     }
 
+    // 休憩終了を記録
     public function endBreakTime($user_id)
     {
         $break_times_collections = BreakTime::where("user_id","=",$user_id)->where("date","<=",date("Y-m-d H:i:s"))->where("date",">=",date("Y-m-d"))->get();
@@ -111,54 +114,4 @@ class User extends Authenticatable implements MustVerifyEmail
         $user->breaking = false;
         $user->save();
     }
-
-    public function getUserStartTime($user_id,$target_month)
-    {
-        $number_of_days_in_a_month = date("t",strtotime($target_month));
-        $attendance = new Attendance();
-        $result = [];
-        for($i=0;$i<$number_of_days_in_a_month;$i++){
-            $result[$i] = $attendance->getAttendanceStart($user_id,$target_month . "-" . str_pad($i+1,2,0,STR_PAD_LEFT));
-        }
-
-        return $result;
-    }
-
-    public function getUserEndTime($user_id,$target_month)
-    {
-        $number_of_days_in_a_month = date("t",strtotime($target_month));
-        $attendance = new Attendance();
-        $result = [];
-        for($i=0;$i<$number_of_days_in_a_month;$i++){
-            $result[$i] = $attendance->getAttendanceEnd($user_id,$target_month . "-" . str_pad($i+1,2,0,STR_PAD_LEFT));
-        }
-
-        return $result;
-    }
-
-    public function getUserWorkingTime($user_id,$target_month)
-    {
-        $number_of_days_in_a_month = date("t",strtotime($target_month));
-        $attendance = new Attendance();
-        $result = [];
-        for($i=0;$i<$number_of_days_in_a_month;$i++){
-            $result[$i] = $attendance->calcWorkingTime($user_id,$target_month . "-" . str_pad($i+1,2,0,STR_PAD_LEFT));
-        }
-
-        return $result;
-    }
-
-    public function getUserTotalBreakTime($user_id,$target_month)
-    {
-        $number_of_days_in_a_month = date("t",strtotime($target_month));
-        $attendance = new Attendance();
-        $result = [];
-        for($i=0;$i<$number_of_days_in_a_month;$i++){
-            $result[$i] = $attendance->getTotalBreakTime($user_id,$target_month . "-" . str_pad($i+1,2,0,STR_PAD_LEFT));
-        }
-
-        return $result;
-    }
-
-
 }
